@@ -1,8 +1,14 @@
 /*
-    Convenience functions for us with ESP8266 module.
-    
-    Presumes the 8266 is attached to the hardware Serial port on the Arduino
-    
+ * A library to make it easier to use the ESP8266 module when that 
+ * module is connected, and directly controlled via the AT command set,
+ * to an arduino. 
+ *
+ *
+ * Presumes that the Arduino is using using the single hardware serial 
+ * port to communicate with a host machine for diagnosing/debugging/or
+ * whatever and this version of the library uses AltSoftSerial to 
+ * communicate with the ESP8266 serial.
+ *
 */
 
 #include <Arduino.h>  // for type definitions
