@@ -1,7 +1,7 @@
 #include "Arduino.h"
 #include "ESP8266.h"
 
-#define wifi Serial
+#define wifi serialToESP8266
 #define SVR_CHAN 1
 #define BCN_CHAN 2
 #define CLI_CHAN 3
@@ -33,6 +33,8 @@ int _wctr = 0;
 bool _connected;
 int _connectMode;
 int _debugLevel = 0;
+
+AltSoftSerial serialToESP8266;
 
 ESP8266::ESP8266(int mode, long baudrate, int debugLevel)
 {
@@ -66,7 +68,7 @@ int ESP8266::initializeWifi(DataCallback dcb, ConnectCallback ccb)
   wifi.begin(_baudrate);
   wifi.setTimeout(5000); 
   
-  //delay(500);
+  delay(500);
   clearResults();
   
   // check for presence of wifi module
@@ -81,7 +83,7 @@ int ESP8266::initializeWifi(DataCallback dcb, ConnectCallback ccb)
   // reset WiFi module
   wifi.println(F("AT+RST"));
   delay(500);
-  if(!searchResults("Ready", 5000, _debugLevel)) {
+  if(!searchResults("ready", 5000, _debugLevel)) {
     return WIFI_ERR_RESET;
   }
   

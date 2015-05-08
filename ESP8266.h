@@ -69,6 +69,7 @@ class ESP8266
     bool getBroadcast();
     void debug(char *msg);
     bool searchResults(char *target, long timeout, int dbg = 0);
+
 };
 
 #endif
