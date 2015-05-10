@@ -3,8 +3,7 @@
  * module is connected, and directly controlled via the AT command set,
  * to an arduino. 
  *
- *
- * Presumes that the Arduino is using using the single hardware serial 
+ * Presumes that the Arduino is using the single hardware serial 
  * port to communicate with a host machine for diagnosing/debugging/or
  * whatever and this version of the library uses AltSoftSerial to 
  * communicate with the ESP8266 serial.
@@ -21,7 +20,7 @@
 typedef int (*DataCallback)(char *);
 typedef void (*ConnectCallback)(void);
 
-enum wifiModes {
+enum WifiMode {
   WIFI_MODE_STA = 1,
   WIFI_MODE_AP,
   WIFI_MODE_APSTA
@@ -35,11 +34,22 @@ enum wifiErrors {
   WIFI_ERR_LINK  
 };
 
+enum DebugLevel {
+  DEBUG_LEVEL_NONE = 0,
+  DEBUG_LEVEL_ERROR_MESSAGES,
+  DEBUG_LEVEL_ALL_DATA
+};
+
 class ESP8266
 {
   public:
-    // constructor - set link mode and server port
-    ESP8266(int mode = 1, long baudrate = 9600, int debugLevel = 0);
+    /*
+     * Construct the ESP8266 instance.  The mode indicates which wifiMode 
+     * the chip should be set into.  There are three valid values for the 
+     * debug
+     * Constructor - set link mode, baudrate and debugLevel. 
+     */
+    ESP8266(WifiMode mode = WIFI_MODE_STA, long baudrate = 9600, DebugLevel debugLevel = DEBUG_LEVEL_NONE);
     
     // init / connect / disconnect access point
     int initializeWifi(DataCallback dcb, ConnectCallback ccb);

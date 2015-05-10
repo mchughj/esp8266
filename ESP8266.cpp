@@ -36,7 +36,7 @@ int _debugLevel = 0;
 
 AltSoftSerial serialToESP8266;
 
-ESP8266::ESP8266(int mode, long baudrate, int debugLevel)
+ESP8266::ESP8266(WifiMode mode, long baudrate, DebugLevel debugLevel)
 {
   _mode = mode;
   _baudrate = baudrate;
@@ -274,7 +274,7 @@ int ESP8266::scan(char *out, int max)
   if (_debugLevel > 0) {
     char num[6];
     itoa(max, num, 10);
-    debug("maximum lenthg of buffer: ");
+    debug("maximum length of buffer: ");
     debug(num);
   }
   wifi.println(F("AT+CWLAP"));
@@ -503,7 +503,7 @@ bool ESP8266::searchResults(char *target, long timeout, int dbg)
     if (_data[0] == 0) {
       debug("Failed: No data");
     } else {
-      debug("Failed");
+      debug("Failed to match; receivedData: ");
       debug(_data);
     }
   }
