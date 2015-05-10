@@ -2,7 +2,24 @@
 
 Author: Steven Sokol <steven.sokol@gmail.com>
 
+Modifications: Aidan McHugh <awmchugh@gmail.com>
+Modifications: Jason McHugh <mchughj@gmail.com>
+
 Created: November 6, 2014
+
+Modification notes:
+
+Need to clean up this documentation to reflect some of the changes that have
+been made.  
+
+One important note.  You need to have AltSoftSerial in your arduino libraries.
+On windows:
+
+  cd ~/documents/arduino/libraries
+  git clone https://github.com/PaulStoffregen/AltSoftSerial.git
+
+
+
 
 ## Table of Contents
 1. [Overview](#section-features)

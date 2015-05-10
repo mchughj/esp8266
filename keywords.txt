@@ -6,13 +6,15 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-Test	KEYWORD1
+ESP8266	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-doSomething	KEYWORD2
+initializeWifi	KEYWORD2
+startClient	KEYWORD2
+startServer	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)

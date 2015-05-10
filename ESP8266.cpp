@@ -36,7 +36,7 @@ int _debugLevel = 0;
 
 AltSoftSerial serialToESP8266;
 
-ESP8266::ESP8266(WifiMode mode, long baudrate, DebugLevel debugLevel)
+ESP8266::ESP8266(int mode, long baudrate, int debugLevel)
 {
   _mode = mode;
   _baudrate = baudrate;
@@ -204,7 +204,7 @@ void ESP8266::run()
     char p[6];
     itoa(_port, p, 10);
     
-    // get lenthg of message text
+    // get length of message text
     memset(_data, 0, 255);
     strcat(_data, line1);
     strcat(_data, _ipaddress);
